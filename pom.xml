@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.uctopus</groupId>
-  <artifactId>uctopus-parent</artifactId>
+  <artifactId>uctopus</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>uctopus-parent</name>
+  <name>uctopus</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
