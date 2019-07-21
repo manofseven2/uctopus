@@ -25,4 +25,9 @@ public class FileConfigurationManager implements ConfigurationManager {
     public int getRampUpTime() {
         return configuration.getInt(UctopusPropertyKeys.RAMP_UP_TIME_IN_SECONDS);
     }
+
+    @Override
+    public String getUrlListAddress() {
+        return configuration.getString(UctopusPropertyKeys.URL_FILE_ADDRESS);
+    }
 }
