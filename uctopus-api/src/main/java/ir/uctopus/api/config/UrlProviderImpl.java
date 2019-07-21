@@ -4,29 +4,26 @@ import java.util.List;
 
 public class UrlProviderImpl implements UrlProvider {
     private static UrlProvider urlProvider;
-    private static Object lock = new Object();
-
     private ConfigurationManager configurationManager;
     private ConfigurationFactory configurationFactory;
+    private CsvFileReader csvFileReader;
+
     private UrlProviderImpl() {
         configurationFactory = new ConfigurationFactory();
         configurationManager = configurationFactory.getConfigurationManager();
         String address = configurationManager.getUrlListAddress();
+        csvFileReader = new CsvFileReader(ClassLoader.getSystemResource(address).getPath());
     }
 
-    public static UrlProvider getUrlProvider() {
+    static synchronized UrlProvider getUrlProvider() {
         if (urlProvider == null) {
-            synchronized (lock) {
-                if (urlProvider == null) {
-                    urlProvider = new UrlProviderImpl();
-                }
-            }
+            urlProvider = new UrlProviderImpl();
         }
         return urlProvider;
     }
 
     @Override
     public List<String> getListOfUrls() {
-        return null;
+        return csvFileReader.getUrls();
     }
 }
